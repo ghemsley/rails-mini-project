@@ -9,8 +9,8 @@
 3. Then install the NodeJS dependencies with `yarn install` 
 4. Then you'll want to set a few environment variables: 
  - First go to https://github.com/settings/tokens and generate an access token, then copy its value and create the environment variable `GIST_TOKEN=your_github_token_here`
- - Next set the variable `GIST_TOKEN=your_github_username_here`
-5. Then hopefully stuff is ready so you'll want to run `yarn start` instead of `rails s`
+ - Next set the variable `GIST_USER=your_github_username_here`
+5. Then hopefully stuff is ready after running `rake db:migrate` so you'll want to run `yarn start` instead of `rails s`
 6. Then go to default `localhost:3000/` and create a user account
 7. Then sign in 
 8. Then create a project at `/projects/new`
