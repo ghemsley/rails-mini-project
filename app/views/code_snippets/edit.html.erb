@@ -1,0 +1,10 @@
+<%= javascript_pack_tag 'editor-bundle' %>
+<h1><%= @code_snippet.name %></h1>
+<%= react_component('Editor', props: { code: @code_snippet.code ? @code_snippet.code : 'render(<h1>Hello world!</h1>)', disabled: false }, prerender: true) %>
+<%= form_for(@code_snippet)  do |f| %>
+  <%= f.text_area :name, placeholder: 'Name' %>
+  <%= f.text_area :code, placeholder: 'Code' %>
+  <%= f.hidden_field :user_id, value: @user&.id %>
+  <%= f.select :project_id, @user.projects.collect {|project| [project.name, project.id]} %>
+  <%= f.submit %>
+<% end %>

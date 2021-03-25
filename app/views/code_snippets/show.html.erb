@@ -1,0 +1,10 @@
+<%= javascript_pack_tag 'editor-bundle' %>
+<h1><%= @code_snippet.name %></h1>
+<p>Project: <%= link_to @code_snippet.project.name, project_path(@code_snippet.project) %></p>
+<% if @code_snippet.my_gist %>
+  <p>Gist: <%= link_to @code_snippet.my_gist.name, my_gist_path(@code_snippet.my_gist) %></p>
+<% end %>
+<p>Creator: <%= link_to @code_snippet.user.username, user_path(@code_snippet.user) %></p>
+<h2>Code</h2>
+<%= react_component('Editor', props: { code: @code_snippet.code ? @code_snippet.code : '<h1>Placeholder code</h1>', disabled: true }, prerender: true) %>
+<%= link_to 'Edit', edit_code_snippet_path(@code_snippet) %>

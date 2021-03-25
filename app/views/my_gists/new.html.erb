@@ -1,0 +1,6 @@
+<%= form_for(@gist) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :description, placeholder: 'Description' %>
+  <%= f.select :project_id, @user.projects.collect {|project| [project.name, project.id]} %>
+  <%= f.submit 'Create gist' %>
+<% end %>

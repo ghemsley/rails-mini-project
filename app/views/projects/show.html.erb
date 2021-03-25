@@ -1,0 +1,33 @@
+<h1><%= @project.name %></h1>
+<p><%= @project.description %></p>
+<h2>Code snippets</h2>
+<% if @project.code_snippets.empty? %>
+  <p>No code snippets for this project yet</p>
+  <%= link_to 'Create snippet', new_code_snippet_path %>
+<% else %>
+  <% @project.code_snippets.each do |code_snippet| %>
+    <%= link_to code_snippet.name, code_snippet_path(code_snippet) %>
+  <% end %>
+<% end %>
+<h2>Gist</h2>
+<% if @project.my_gist %>
+  <%= link_to @project.my_gist.name, my_gist_path(@project.my_gist) %>
+<% else %>
+  <p>No gist for this project yet</p>
+  <%= link_to 'Create gist', "/projects/#{@project.id}/gist/new" %>
+<% end %>
+<br/>
+<br/>
+<% if @joined %>
+  <%= form_for @projects_user, {url: "/projects/#{@project.id}/leave", method: 'delete'} do |f| %>
+    <%= f.hidden_field :project_id, value: @project.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit 'Leave project' %>
+  <% end %>
+<% else %>
+  <%= form_for @projects_user, {url: "/projects/#{@project.id}/join", method: 'post'} do |f| %>
+    <%= f.hidden_field :project_id, value: @project.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit 'Join project' %>
+  <% end %>
+<% end %>

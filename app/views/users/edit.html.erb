@@ -1,0 +1,6 @@
+<%= form_for(@user) do |f| %>
+  <%= f.text_field :username, placeholder: 'Username' %>
+  <%= f.password_field :password, placeholder: 'Current password' %>
+  <input type='password' name='user[new_password]' placeholder='New password' />
+  <%= f.submit %>
+<% end %>

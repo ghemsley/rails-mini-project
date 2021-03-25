@@ -1,0 +1,9 @@
+<%= form_for(@gist) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :description, placeholder: 'Description' %>
+  <div>
+    <%= f.collection_check_boxes(:code_snippets, @project.code_snippets, :id, :name, { multiple: true, checked: true } ) %>
+  </div>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <%= f.submit 'Create gist' %>
+<% end %>

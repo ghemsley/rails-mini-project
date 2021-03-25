@@ -1,0 +1,12 @@
+<%= link_to @gist.name, @gist.url %>
+<p><%= @gist.description %></p>
+<p>Project: <%= link_to @gist.project.name, project_path(@gist.project) %></p>
+<h2>Code snippets</h2>
+
+<% @gist.code_snippets.each do |code_snippet| %>
+  <%= link_to code_snippet.name, code_snippet_path(code_snippet) %>
+<% end %>
+
+<%= form_for @gist, method: 'delete' do |f| %>
+  <%= f.submit 'Delete gist' %>
+<% end %>

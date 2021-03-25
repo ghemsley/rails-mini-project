@@ -1,0 +1,4 @@
+<% @gists.each do |gist| %>
+  <%= link_to gist.name, my_gist_path(gist) %>
+  <p><%= gist.description %></p>
+<% end %>

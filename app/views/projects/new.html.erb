@@ -1,0 +1,6 @@
+<%= form_for(@project) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :description, placeholder: 'Description' %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.submit %>
+<% end %>
